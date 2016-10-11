@@ -1,0 +1,15 @@
+### JetBrains
+.idea
+*.iws
+
+### OSX
+*.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+### Source
+node_modules
+*.js
+*.js.map

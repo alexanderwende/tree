@@ -1,0 +1,27 @@
+{
+  "name": "tree",
+  "version": "0.0.1",
+  "description": "Fun with trees",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderwende/tree.git"
+  },
+  "keywords": [
+    "typescript",
+    "javascript",
+    "tree"
+  ],
+  "author": "Alexander Wende",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexanderwende/tree/issues"
+  },
+  "homepage": "https://github.com/alexanderwende/tree#readme",
+  "devDependencies": {
+    "typescript": "^2.0.3"
+  }
+}
