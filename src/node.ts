@@ -1,42 +1,40 @@
-export interface NodeInterface {
-    key: string;
-    value: string;
+export interface NodeInterface<T> {
+    key: string | undefined;
+    value: T | undefined;
+    parent: NodeInterface<T> | undefined;
+    children: Map<string, NodeInterface<T>>
 }
 
-export interface NodeConstructor {
-    new (key?: string, value?: any): NodeInterface;
+export interface NodeConstructor<T> {
+    new (key?: string, value?: T): NodeInterface<T>;
 }
 
-export class Node implements NodeInterface {
+export class Node<T> implements NodeInterface<T> {
 
-    private _key: string;
-    private _value: any;
-    private _parent: Node;
-    private _children: Map<string, Node>;
+    public readonly key: string;
+    public value: T;
+    public parent: NodeInterface<T>;
+    public children: Map<string, NodeInterface<T>> = <Map<string, NodeInterface<T>>> new Map();
 
-    constructor (key: string = '', value: any = undefined) {
+    constructor (key: string = '', value: T = undefined) {
 
         this.key   = key;
         this.value = value;
     }
 
-    set key (key: string) {
+    append (node: NodeInterface<T>) {
 
-        this._key = key;
+        node.parent = this;
+
+        this.children.set(node.key, node);
     }
 
-    get key (): string {
+    remove (node: NodeInterface<T>): NodeInterface<T> {
 
-        return this._key;
-    }
+        this.children.delete(node.key);
 
-    set value (value: any) {
+        node.parent = undefined;
 
-        this._value = value;
-    }
-
-    get value (): any {
-
-        return this._value;
+        return node;
     }
 }
